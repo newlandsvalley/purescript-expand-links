@@ -1,4 +1,4 @@
-module Data.Link where
+module Data.Link (expandLinks) where
 
 import Data.String.Regex
 
@@ -25,8 +25,8 @@ safeHead xs =
 -- | http:// or https:// whatever - when these links are __not__ embedded
 -- | in quote characters (either single ot double).
 -- | i.e. don't expand links that are already presented as HTML attributes.
-buildLinks :: String -> String
-buildLinks s =
+expandLinks :: String -> String
+expandLinks s =
   let
     -- pad with leading space to allow matches at the start of the strinng
     target = " " <> s

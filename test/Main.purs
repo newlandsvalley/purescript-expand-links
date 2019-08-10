@@ -1,7 +1,7 @@
 module Test.Main where
 
 import Control.Monad.Free (Free)
-import Data.Link (buildLinks)
+import Data.Link (expandLinks)
 import Effect (Effect)
 import Prelude (Unit, discard, ($), (<>))
 import Test.Unit (TestF, suite, test)
@@ -16,15 +16,15 @@ urlExpansionSuite :: Free TestF Unit
 urlExpansionSuite =
   suite "URL expansion" do
     test "global replace single URL" do
-      Assert.equal sample1Expanded $ buildLinks sample1
+      Assert.equal sample1Expanded $ expandLinks sample1
     test "global replace multiple URLs" do
-      Assert.equal sample2Expanded $ buildLinks sample2
+      Assert.equal sample2Expanded $ expandLinks sample2
     test "replace URL at start" do
-      Assert.equal sample3Expanded $ buildLinks sample3
+      Assert.equal sample3Expanded $expandLinks sample3
     test "ignore URLs already embedded as HTML double-quoted attributes" do
-      Assert.equal sample4 $ buildLinks sample4
+      Assert.equal sample4 $ expandLinks sample4
     test "ignore URLs already embedded as HTML single-quoted attributes" do
-      Assert.equal sample5 $ buildLinks sample5
+      Assert.equal sample5 $ expandLinks sample5
 
 sample1 :: String
 sample1 =
