@@ -13,7 +13,7 @@ is expanded to:
    <a href="http://foo.com" >http://foo.com<\a>
 ```
 
-I use it in conjunction with [purescript-html-parser-halogen](https://github.com/rnons/purescript-html-parser-halogen) in order to allow a user to submit text to a server (with or without embedded HTML snippets and have it returned as active Halogen HTML.
+I use it in conjunction with [purescript-html-parser-halogen](https://github.com/rnons/purescript-html-parser-halogen) in order to allow a user to submit text to a server (with or without embedded HTML snippets) and have it returned as active Halogen HTML.
 
 
 To build
