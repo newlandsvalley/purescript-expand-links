@@ -13,7 +13,7 @@ is expanded to:
    <a href="http://foo.com" >http://foo.com<\a>
 ```
 
-It also includes a function to macro-expand simple YouTube watch URLS as embedded iframe links, allowing the user to submit a simple URL and have it returned as an active embedded video.  For example:
+It also includes a function to macro-expand simple YouTube watch URLs as embedded iframe links, allowing the user to submit a simple URL and have it returned as an active embedded video.  For example:
 
 
 ```
