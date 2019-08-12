@@ -1,7 +1,7 @@
 module Test.Main where
 
 import Control.Monad.Free (Free)
-import Data.Link (expandLinks)
+import Data.Link (expandLinks, expandYouTubeWatchLinks)
 import Effect (Effect)
 import Prelude (Unit, discard, ($), (<>))
 import Test.Unit (TestF, suite, test)
@@ -25,6 +25,8 @@ urlExpansionSuite =
       Assert.equal sample4 $ expandLinks sample4
     test "ignore URLs already embedded as HTML single-quoted attributes" do
       Assert.equal sample5 $ expandLinks sample5
+    test "global replace single You Tube Watch URL" do
+      Assert.equal sample6Expanded $ expandYouTubeWatchLinks sample6
 
 sample1 :: String
 sample1 =
@@ -58,3 +60,11 @@ sample4 =
 sample5 :: String
 sample5 =
     "already embedded URL: <a href='https://www.bbc.co.uk/news' >https://www.bbc.co.uk/news</a>"
+
+sample6 :: String
+sample6 =
+  "http://www.youtube.com/watch?v=7fw2eTvYUcE"
+
+sample6Expanded :: String
+sample6Expanded =
+  "<iframe width='420' height='315' src='//www.youtube.com/embed/7fw2eTvYUcE' frameborder='0' allowfullscreen='true'></iframe>"
