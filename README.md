@@ -33,5 +33,9 @@ I use it in conjunction with [purescript-html-parser-halogen](https://github.com
 To build
 --------
 
-     bower install
-     pulp build
+   npm run build
+
+To test
+--------
+
+   npm run test
