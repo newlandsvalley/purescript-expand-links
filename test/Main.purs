@@ -1,32 +1,34 @@
 module Test.Main where
 
-import Control.Monad.Free (Free)
 import Data.Link (expandLinks, expandYouTubeWatchLinks)
 import Effect (Effect)
+import Effect.Aff (launchAff_)
 import Prelude (Unit, discard, ($), (<>))
-import Test.Unit (TestF, suite, test)
-import Test.Unit.Assert as Assert
-import Test.Unit.Main (runTest)
+import Test.Spec (Spec, describe, it)
+import Test.Spec.Assertions (shouldEqual)
+import Test.Spec.Reporter (specReporter)
+import Test.Spec.Runner (runSpec)
 
 main :: Effect Unit
-main = runTest do
-  urlExpansionSuite
+main = launchAff_ $ runSpec [ specReporter] do 
+  describe "expand-links" do
+    urlExpansionSpec
 
-urlExpansionSuite :: Free TestF Unit
-urlExpansionSuite =
-  suite "URL expansion" do
-    test "global replace single URL" do
-      Assert.equal sample1Expanded $ expandLinks sample1
-    test "global replace multiple URLs" do
-      Assert.equal sample2Expanded $ expandLinks sample2
-    test "replace URL at start" do
-      Assert.equal sample3Expanded $expandLinks sample3
-    test "ignore URLs already embedded as HTML double-quoted attributes" do
-      Assert.equal sample4 $ expandLinks sample4
-    test "ignore URLs already embedded as HTML single-quoted attributes" do
-      Assert.equal sample5 $ expandLinks sample5
-    test "global replace single You Tube Watch URL" do
-      Assert.equal sample6Expanded $ expandYouTubeWatchLinks sample6
+urlExpansionSpec :: Spec Unit
+urlExpansionSpec =
+  describe "URL expansion" do
+    it "global replace single URL" do
+      sample1Expanded `shouldEqual` expandLinks sample1
+    it "global replace multiple URLs" do
+      sample2Expanded `shouldEqual` expandLinks sample2
+    it "replace URL at start" do
+      sample3Expanded `shouldEqual` expandLinks sample3
+    it "ignore URLs already embedded as HTML double-quoted attributes" do
+      sample4 `shouldEqual` expandLinks sample4
+    it "ignore URLs already embedded as HTML single-quoted attributes" do
+      sample5 `shouldEqual` expandLinks sample5
+    it "global replace single You Tube Watch URL" do
+      sample6Expanded `shouldEqual` expandYouTubeWatchLinks sample6
 
 sample1 :: String
 sample1 =
