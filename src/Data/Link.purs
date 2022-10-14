@@ -20,10 +20,6 @@ urlRegex  :: Regex
 urlRegex =
   fromRight' (\_ -> unsafeCrashWith "Unexpected Right") $ regex urlPattern global
 
-safeHead :: Array String -> String
-safeHead xs =
-  fromMaybe "" $ head xs
-
 safeHeadMaybes :: Array (Maybe String) -> String
 safeHeadMaybes xs =
   fromMaybe "" $ join $ head xs
@@ -42,7 +38,7 @@ expandLinks s =
     -- pad with leading space to allow matches at the start of the strinng
     target = " " <> s
     f :: String -> Array (Maybe String) -> String
-    f match xs =
+    f _match xs =
       " <a href=\"" <> (safeHeadMaybes xs) <> "\" >" <> (safeHeadMaybes xs) <> "</a>"
   in
     -- and drop the leading space after macro-expansion
@@ -66,7 +62,7 @@ expandYouTubeWatchLinks s =
     target = " " <> s
     f :: String -> Array (Maybe String) -> String
     -- we must use the second capture group as a parameter to build the iframe
-    f match xs =
+    f _match xs =
       iframe (safeHeadMaybes $ safeTailMaybes xs)
   in
     -- and drop the leading space after macro-expansion
