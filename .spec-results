@@ -1,0 +1,44 @@
+[
+  [
+    "expand-links URL expansion global replace multiple URLs",
+    {
+      "timestamp": "1738071908737.0",
+      "success": true
+    }
+  ],
+  [
+    "expand-links URL expansion global replace single URL",
+    {
+      "timestamp": "1738071908737.0",
+      "success": true
+    }
+  ],
+  [
+    "expand-links URL expansion global replace single You Tube Watch URL",
+    {
+      "timestamp": "1738071908737.0",
+      "success": true
+    }
+  ],
+  [
+    "expand-links URL expansion ignore URLs already embedded as HTML double-quoted attributes",
+    {
+      "timestamp": "1738071908737.0",
+      "success": true
+    }
+  ],
+  [
+    "expand-links URL expansion ignore URLs already embedded as HTML single-quoted attributes",
+    {
+      "timestamp": "1738071908737.0",
+      "success": true
+    }
+  ],
+  [
+    "expand-links URL expansion replace URL at start",
+    {
+      "timestamp": "1738071908737.0",
+      "success": true
+    }
+  ]
+]

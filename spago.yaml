@@ -1,0 +1,20 @@
+package:
+  dependencies:
+    - arrays
+    - either
+    - maybe
+    - partial
+    - prelude
+    - strings
+  name: expand-links
+  test:
+    main: Test.Main
+    dependencies:
+      - aff
+      - effect
+      - spec
+      - spec-node
+workspace:
+  extraPackages: {}
+  packageSet:
+    registry: 62.3.2

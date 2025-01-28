@@ -2,15 +2,14 @@ module Test.Main where
 
 import Data.Link (expandLinks, expandYouTubeWatchLinks)
 import Effect (Effect)
-import Effect.Aff (launchAff_)
-import Prelude (Unit, discard, ($), (<>))
+import Prelude (Unit, discard, (<>))
 import Test.Spec (Spec, describe, it)
 import Test.Spec.Assertions (shouldEqual)
 import Test.Spec.Reporter (specReporter)
-import Test.Spec.Runner (runSpec)
+import Test.Spec.Runner.Node (runSpecAndExitProcess)
 
 main :: Effect Unit
-main = launchAff_ $ runSpec [ specReporter] do 
+main = runSpecAndExitProcess [ specReporter] do 
   describe "expand-links" do
     urlExpansionSpec
 
